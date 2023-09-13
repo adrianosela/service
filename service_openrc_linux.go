@@ -17,6 +17,9 @@ func isOpenRC() bool {
 	if _, err := exec.LookPath("openrc-init"); err == nil {
 		return true
 	}
+	if _, err := exec.LookPath("rc-service"); err == nil {
+		return true
+	}
 	if _, err := os.Stat("/etc/inittab"); err == nil {
 		filerc, err := os.Open("/etc/inittab")
 		if err != nil {
